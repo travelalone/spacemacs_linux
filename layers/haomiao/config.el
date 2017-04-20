@@ -1,6 +1,6 @@
 (dolist (charset '(kana han cjk-misc bopomofo))
   (set-fontset-font (frame-parameter nil 'font) charset
-                    (font-spec :family "AR PL UKai CN" :size 20)))
+                    (font-spec :family "KaiTi" :size 20)))
 
 (electric-pair-mode t)
 (setq-default TeX-engine 'luatex)
