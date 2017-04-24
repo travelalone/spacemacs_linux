@@ -51,3 +51,13 @@ same directory as the org-buffer and insert a link to this file."
     (read-string "Description: " desc)))
 
 (setf org-make-link-description-function #'org-link-describe)
+
+(defun update-tag ()
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (let ((count 1))
+      (while (re-search-forward "\\tag{\\([0-9]+\\)}" nil t)
+        (replace-match (format "%d" count) nil nil nil 1)
+        (setq count (1+ count)))))
+  )

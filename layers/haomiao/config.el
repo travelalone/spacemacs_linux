@@ -26,10 +26,12 @@
                                         \\usepackage{amssymb}
                                         \\usepackage{booktabs}
                                         \\usepackage[colorlinks,linkcolor=black,anchorcolor=black,citecolor=black]{hyperref}
+                                        \\usepackage[all]{hypcap}
                                         \\tolerance=1000
                                         \\usepackage[margin=1in]{geometry}
                                         \\usepackage{listings}
                                         \\usepackage{xcolor}
+                                        \\numberwithin{equation}{subsection}
                                         \\lstset{
                                         %行号
                                         numbers=left,
@@ -85,12 +87,8 @@
 (setq org-latex-default-class "ctexart")
 (setq org-latex-pdf-process
       '(
-        "xelatex -interaction nonstopmode -output-directory %o %f"
-        "xelatex -interaction nonstopmode -output-directory %o %f"
-        "xelatex -interaction nonstopmode -output-directory %o %f"
+        "latexmk -pdflatex='lualatex -shell-escape -interaction nonstopmode' -pdf -f  %f"
         "rm -fr %b.out %b.log %b.tex auto"))
-
-
 
 (setq org-startup-truncated nil)
 
@@ -106,4 +104,8 @@
          "* TODO [#C] %?\n  %i\n %a \n %U")
         ))
 
+(setq org-ref-default-bibliography '("~/Papers/references.bib")
+      org-ref-pdf-directory "~/Papers/pdf/"
+      org-ref-bibliography-notes "~/Papers/notes.org")
 
+(setq org-confirm-babel-evaluate nil)
