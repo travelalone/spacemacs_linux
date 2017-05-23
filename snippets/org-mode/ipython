@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name:ipython block
+# key: py
+# --
+#+BEGIN_SRC ipython :session  ${1::file ${2:`(format "%s%s%s" (concat (file-name-nondirectory  (buffer-file-name)) "_imgs/") (make-temp-name "py") ".png")`}} :exports ${3:both}
+$0
+#+END_SRC

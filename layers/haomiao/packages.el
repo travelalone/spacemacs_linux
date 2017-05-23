@@ -46,6 +46,7 @@
 (defun haomiao/init-cdlatex()
   (use-package cdlatex
     :config
+    (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
     (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
     )
   )

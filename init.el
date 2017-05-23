@@ -39,8 +39,8 @@ values."
                       better-defaults-move-to-end-of-code-first t)
      emacs-lisp
      git
-     markdown
      org
+     dash
      (shell :variables
              shell-default-height 30
              shell-default-position 'bottom)
@@ -50,7 +50,7 @@ values."
      (colors :variables colors-enable-nyan-cat-progress-bar t)
      (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
      haomiao
-     ipython-notebook
+     plantuml
      bibtex
      )
    ;; List of additional packages that will be installed without being
@@ -59,6 +59,7 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '( diredful
                                        dired-icon
+                                       ob-ipython
                                      ) ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -66,7 +67,9 @@ values."
                                     vi-tilde-fringe
                                     doc-view
                                     lorem-ipsum
-                                    evil-tutor)
+                                    evil-tutor
+                                    smartparens
+                                    )
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -134,7 +137,9 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(material
+   dotspacemacs-themes '(
+                         material
+                         leuven
                          spacemacs-dark
                          spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -312,6 +317,8 @@ It is called immediately after `dotspacemacs/init', before layer configuration e
   (setq powerline-default-separator 'arrow)
   (setq ns-use-srgb-colorspace nil)
   (load custom-file)
+  (add-hook 'prog-mode-hook 'linum-mode)
+  (global-hungry-delete-mode t)
  "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration.
