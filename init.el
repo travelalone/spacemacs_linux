@@ -37,10 +37,10 @@ values."
      auto-completion
      (better-defaults :variables
                       better-defaults-move-to-end-of-code-first t)
-     emacs-lisp
      git
      org
      dash
+     emacs-lisp
      (shell :variables
              shell-default-height 30
              shell-default-position 'bottom)
@@ -48,9 +48,9 @@ values."
      syntax-checking
      latex
      (colors :variables colors-enable-nyan-cat-progress-bar t)
+;;             colors-colorize-identifiers 'all)
      (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
      haomiao
-     plantuml
      bibtex
      )
    ;; List of additional packages that will be installed without being
@@ -60,6 +60,7 @@ values."
    dotspacemacs-additional-packages '( diredful
                                        dired-icon
                                        ob-ipython
+                                       etags-select
                                      ) ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -69,6 +70,11 @@ values."
                                     lorem-ipsum
                                     evil-tutor
                                     smartparens
+                                    coffee-mode
+                                    magit-gitflow
+                                    emmet-mode
+                                    org-gutter
+                                    org-gutter-fringe
                                     )
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -142,6 +148,7 @@ values."
                          leuven
                          spacemacs-dark
                          spacemacs-light)
+
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -319,6 +326,9 @@ It is called immediately after `dotspacemacs/init', before layer configuration e
   (load custom-file)
   (add-hook 'prog-mode-hook 'linum-mode)
   (global-hungry-delete-mode t)
+  (setq tramp-ssh-controlmaster-options
+        "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+
  "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration.

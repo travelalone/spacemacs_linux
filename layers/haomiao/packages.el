@@ -32,8 +32,8 @@
 (defconst haomiao-packages
   '(youdao-dictionary
     cdlatex
-    openwith
     org-edit-latex
+    openwith
     ))
 
 (defun haomiao/init-youdao-dictionary()
@@ -57,9 +57,10 @@
 
 
 (defun haomiao/init-openwith()
+  :defer t
   :config
   (setq openwith-associations '(
                                 ("\\.\\(?:PDF\\|DVI\\|OD[FGPST]\\|DOCX?\\|XLSX?\\|PPTX?\\|pdf\\|djvu\\|dvi\\|od[fgpst]\\|docx?\\|xlsx?\\|pptx?\\)\\'" "okular" (file))
                                 ))
   (openwith-mode t))
-;;; packages.el ends here
+;; packages.el ends here

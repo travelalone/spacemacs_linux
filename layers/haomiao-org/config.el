@@ -112,5 +112,4 @@
 
 (setq org-plantuml-jar-path "~/Documents/plantuml.jar")
 (setq org-ditaa-jar-path "~/Documents/ditaa0_9.jar")
-(setq ein:use-auto-complete t)
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)

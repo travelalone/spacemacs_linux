@@ -11,3 +11,5 @@
 (setq-default TeX-engine 'luatex)
 (setq-default TeX-PDF-mode t)
 (setq python-indent-offset 4)
+
+(spacemacs/set-leader-keys "oj" 'etags-select-find-tag)
