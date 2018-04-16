@@ -1,4 +1,4 @@
-;; -*- mode: emacs-lisp -*-
+ ; -*- mode: emacs-lisp -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
@@ -27,6 +27,9 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     html
+     yaml
+     markdown
      python
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -34,10 +37,10 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      helm
+     ;; ivy
      auto-completion
      (better-defaults :variables
                       better-defaults-move-to-end-of-code-first t)
-     git
      org
      dash
      emacs-lisp
@@ -46,12 +49,17 @@ values."
              shell-default-position 'bottom)
      spell-checking
      syntax-checking
-     latex
+     (latex :variables
+            latex-enable-auto-fill t
+            latex-enable-folding t
+            )
      (colors :variables colors-enable-nyan-cat-progress-bar t)
-;;             colors-colorize-identifiers 'all)
      (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
      haomiao
      bibtex
+     ess
+     octave
+     sml
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -60,7 +68,7 @@ values."
    dotspacemacs-additional-packages '( diredful
                                        dired-icon
                                        ob-ipython
-                                       etags-select
+                                       latex-extra
                                      ) ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -75,6 +83,8 @@ values."
                                     emmet-mode
                                     org-gutter
                                     org-gutter-fringe
+                                    ess-R-object-popup
+                                    org-projectile
                                     )
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -107,7 +117,7 @@ values."
    ;; when the current branch is not `develop'. Note that checking for
    ;; new versions works via git commands, thus it calls GitHub services
    ;; whenever you start Emacs. (default nil)
-   dotspacemacs-check-for-update nil
+   dotspacemacs-check-for-update t
    ;; If non-nil, a form that evaluates to a package directory. For example, to
    ;; use different package directories for different Emacs versions, set this
    ;; to `emacs-version'.
@@ -306,8 +316,8 @@ values."
 (defun dotspacemacs/user-init ()
   (setq configuration-layer--elpa-archives
         '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
-          ("org-cn"   . "http://elpa.emacs-china.org/org/")
-          ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
+         ("org-cn"   . "http://elpa.emacs-china.org/org/")
+        ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
   (load custom-file)
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init', before layer configuration executes. This function is mostly useful for variables that need to be set before packages are loaded. If you are unsure, you should try in setting them in
@@ -342,3 +352,4 @@ you should place your code here."
 
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
 (load custom-file)
+

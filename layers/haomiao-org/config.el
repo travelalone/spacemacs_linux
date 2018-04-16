@@ -1,5 +1,5 @@
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "~/notes/tasks.org" "Tasks")
+      '(("t" "Todo" entry (file+headline "~/Dropbox/org/refile-beorg.org" "Tasks")
          "* TODO %?\n  %i\n %U")
         ("n" "Notes" entry (file+datetree "~/notes/notes.org")
          "* %?\nEntered on %U\n  %i\n")
@@ -113,3 +113,6 @@
 (setq org-plantuml-jar-path "~/Documents/plantuml.jar")
 (setq org-ditaa-jar-path "~/Documents/ditaa0_9.jar")
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
+(setq org-tag-alist '(("URGENT" . ?u)
+                      ("@Research" . ?r)
+                      ("@Data" . ?d)))

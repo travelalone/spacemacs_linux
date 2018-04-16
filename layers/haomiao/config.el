@@ -13,3 +13,6 @@
 (setq python-indent-offset 4)
 
 (spacemacs/set-leader-keys "oj" 'etags-select-find-tag)
+(add-hook 'LaTeX-mode-hook
+          #'(lambda ()
+              (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex -shell-escape --synctex=1%(mode)%' %t" TeX-run-TeX nil t))))
